@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Website Gw</title>
+  <style>
+    body {
+      margin: 0;
+      padding-top: 90px;
+      background: #0b0f1a;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ===== NAV LIQUID ===== */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 4px;
+      padding: 8px;
+      background: rgba(20, 24, 38, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+      z-index: 10;
+    }
+    .nav-link {
+      position: relative;
+      z-index: 2;
+      color: #aaa;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 999px;
+      transition: color 0.3s;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff;
+    }
+    .liquid {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      height: calc(100% - 16px);
+      background: linear-gradient(135deg, #ff5f6d, #6a5cff);
+      border-radius: 999px;
+      transition: all 0.45s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      z-index: 1;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      padding: 40px;
+      flex-wrap: wrap;
+    }
+    .teks {
+      max-width: 500px;
+      animation: muncul 1s ease-out;
+    }
+    h1 {
+      font-size: 48px;
+      margin: 0 0 10px;
+    }
+    .hero img {
+      width: 300px;
+      max-width: 100%;
+      border-radius: 16px;
+      transition: transform 0.5s;
+      animation: muncul 1.4s ease-out;
+    }
+    .hero img:hover {
+      transform: scale(1.08);
+    }
+
+    /* ===== CARDS KONTAK (dengan ikon + animasi klik) ===== */
+    .cards {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      text-decoration: none;
+      border: 1px solid #555;
+      border-radius: 8px;
+      padding: 12px 16px;
+      transition: transform 0.15s, background 0.2s;
+    }
+    .card svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+    .card:hover {
+      background: rgba(255,255,255,0.08);
+    }
+    .card:active {
+      transform: scale(0.92);
+    }
+
+    /* ===== ANIMASI MUNCUL ===== */
+    @keyframes muncul {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== PARALLAX BANNER PROJECTS ===== */
+    .parallax-wrap {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+    .bg-parallax {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      min-width: 800px;
+      filter: brightness(0.4);
+      will-change: transform;
+    }
+    .parallax-text {
+      position: relative;
+      z-index: 2;
+      padding: 60px 40px;
+    }
+
+    /* ===== GRID PROJECTS ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+    .project-card {
+      background: #12172a;
+      border: 1px solid #2a3050;
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: white;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+    }
+    .project-card:active {
+      transform: scale(0.96);
+    }
+    .project-card .thumb {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .project-card .info {
+      padding: 16px;
+    }
+    .project-card h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+    .project-card p {
+      margin: 0;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    /* ===== ABOUT ===== */
+    .about-section {
+      padding: 60px 40px 100px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .about-section h2 {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+    .about-section p {
+      line-height: 1.7;
+      color: #ccc;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .skill-tag {
+      border: 1px solid #555;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 14px;
+      color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="liquid"></span>
+    <a href="#home" class="nav-link active">HOME</a>
+    <a href="#projects" class="nav-link">PROJECTS</a>
+    <a href="#about" class="nav-link">ABOUT</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="teks">
+      <h1>HELLO!</h1>
+      <p>Gw Dimas — bikin konten YouTube sendirian, dari nulis, sampai edit. Selain itu gw juga lagi belajar ngoding buat bikin tools kecil yang bantu proses kerja gw.</p>
+      <div class="cards">
+        <a href="mailto:dimzputra9@gmail.com" class="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </a>
+        <a href="https://instagram.com/dimzputra31" class="card" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+          Instagram
+        </a>
+        <a href="https://tiktok.com/@dimaspengenimo" class="card" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          TikTok
+        </a>
+      </div>
+    </div>
+    <img src="foto/profil.jpg" alt="Foto gw">
+  </section>
+
+  <section class="parallax-wrap" id="projects">
+    <img src="foto/profil.jpg" class="bg-parallax" alt="">
+    <div class="parallax-text">
+      <h2>PROJECTS</h2>
+      <p>Beberapa hal yang lagi gw kerjain.</p>
+    </div>
+  </section>
+
+  <div class="projects-grid">
+    <a href="#" class="project-card" target="_blank">
+      <img src="foto/profil.jpg" class="thumb" alt="Project 1">
+      <div class="info">
+        <h3>Judul Konten 1</h3>
+        <p>Deskripsi singkat konten/project ini.</p>
+      </div>
+    </a>
+    <a href="#" class="project-card" target="_blank">
+      <img src="foto/profil.jpg" class="thumb" alt="Project 2">
+      <div class="info">
+        <h3>Judul Konten 2</h3>
+        <p>Deskripsi singkat konten/project ini.</p>
+      </div>
+    </a>
+    <a href="#" class="project-card" target="_blank">
+      <img src="foto/profil.jpg" class="thumb" alt="Project 3">
+      <div class="info">
+        <h3>Judul Konten 3</h3>
+        <p>Deskripsi singkat konten/project ini.</p>
+      </div>
+    </a>
+  </div>
+
+  <section class="about-section" id="about">
+    <h2>ABOUT</h2>
+    <p>Gw Dimas, bikin konten YouTube secara solo — mulai dari nulis naskah, syuting, sampai edit semuanya sendiri. Di luar itu, gw juga lagi belajar ngoding dari nol, salah satu hasilnya ya website ini sendiri.</p>
+    <div class="skills">
+      <span class="skill-tag">Content Creation</span>
+      <span class="skill-tag">Video Editing</span>
+      <span class="skill-tag">Belajar HTML/CSS/JS</span>
+    </div>
+  </section>
+
+  <script>
+    // parallax
+    window.addEventListener('scroll', () => {
+      const bg = document.querySelector('.bg-parallax');
+      const scrolled = window.scrollY;
+      bg.style.transform = `translateX(-50%) translateY(${scrolled * 0.3}px)`;
+    });
+
+    // liquid nav
+    const nav = document.querySelector('nav');
+    const liquid = document.querySelector('.liquid');
+    const links = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    function moveLiquid(el) {
+      liquid.style.width = el.offsetWidth + 'px';
+      liquid.style.left = el.offsetLeft + 'px';
+    }
+
+    window.addEventListener('load', () => {
+      moveLiquid(document.querySelector('.nav-link.active'));
+    });
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => moveLiquid(link));
+    });
+
+    nav.addEventListener('mouseleave', () => {
+      moveLiquid(document.querySelector('.nav-link.active'));
+    });
+
+    window.addEventListener('scroll', () => {
+      let current = sections[0].id;
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 150) current = sec.id;
+      });
+      links.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
